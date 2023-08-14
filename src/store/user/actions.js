@@ -1,11 +1,11 @@
-export const SET_USER = 'SET_USER';
-export const CLEAR_USER = 'CLEAR_USER';
+export const ADD_USER = 'ADD_USER';
+export const CLEAR_USERS = 'CLEAR_USERS';
 
-export const setUser = (userData) => ({
-  type: SET_USER,
+export const addUser = (userData) => ({
+  type: ADD_USER,
   payload: userData,
 });
 
-export const clearUser = () => ({
-  type: CLEAR_USER,
+export const clearUsers = () => ({
+  type: CLEAR_USERS,
 });

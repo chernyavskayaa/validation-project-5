@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import validator from 'validator';
-import { setUser } from '../../store/user/actions';
+import { addUser } from '../../store/user/actions';
 import { TextField } from '../common';
 
 const UserForm = () => {
@@ -57,17 +57,26 @@ const UserForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     for (const field in formData) {
       validateField(field, formData[field]);
     }
+
     if (Object.keys(errors).length === 0) {
-      dispatch(setUser(formData));
+      dispatch(addUser(formData));
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        message: '',
+      });
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <TextField
+        value={formData.firstName}
         name='firstName'
         label='First Name'
         placeholder='Enter first name'
@@ -76,6 +85,7 @@ const UserForm = () => {
         onBlur={handleBlur}
       />
       <TextField
+        value={formData.lastName}
         name='lastName'
         label='Last Name'
         placeholder='Enter last name'
@@ -84,6 +94,7 @@ const UserForm = () => {
         onBlur={handleBlur}
       />
       <TextField
+        value={formData.email}
         name='email'
         label='Email'
         placeholder='Enter email'
@@ -92,6 +103,7 @@ const UserForm = () => {
         onBlur={handleBlur}
       />
       <TextField
+        value={formData.message}
         name='message'
         label='Message'
         placeholder='Enter message'
