@@ -1,5 +1,5 @@
 import { userReducer } from '../reducer';
-import { ADD_USER, CLEAR_USERS } from '../actions';
+import { ADD_USER } from '../actions';
 
 describe('userReducer', () => {
   it('should handle ADD_USER correctly', () => {
